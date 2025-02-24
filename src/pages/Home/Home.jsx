@@ -1,12 +1,18 @@
 import Navbar from "../../components/navbar/navbar";
 import Header from "../../components/Header/Header";
 import ExploreMenu from "../../components/ExploreMenu/ExploreMenu";
+import FoodDisplay from "../../components/FoodDisplay/FoodDisplay";
+import { useState } from "react";
+
 function Home () {
+     const [category, setCategory ] = useState("All");
      return(
         <div>
        <Navbar />
         <Header /> 
-        <ExploreMenu /> 
+        <ExploreMenu category={category} setCategory={setCategory} />
+
+        <FoodDisplay category={category} />
        </div>
      )
 }

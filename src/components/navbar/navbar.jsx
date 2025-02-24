@@ -47,7 +47,6 @@ function Navbar() {
             <img src={assets.basket_icon} alt="" />
             </Link>
             <div className="dot">0</div>
-
         </div>
         <button>Sign in</button>
       </div>

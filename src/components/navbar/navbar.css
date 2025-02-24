@@ -5,11 +5,10 @@
   justify-content: space-between;
   position: fixed;
   top: 0;
-  /* left: 0; */
-  /* right: 0; */
   z-index: 1 ;
   background-color: white;
   width: 80%;
+  box-shadow: rgb(30px, 20px, 10px);
   /* margin-bottom: 50px; */
 }
 
@@ -59,7 +58,7 @@
 
 .navbar-search-icon .dot {
   position: absolute;
-  min-width: 10px;
+  /* min-width: 10px; */
   background-color: tomato;
   min-height: 10px;
   border-radius: 50%;
