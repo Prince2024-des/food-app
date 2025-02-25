@@ -11,7 +11,7 @@ function Navbar() {
       </Link>
       <ul className="navbar-menu">
         <Link
-          to="navbar-menu"
+          to="/"
           onClick={() => setMenu("Home")}
           className={menu === "Home" ? "active" : ""}
         >
@@ -26,7 +26,7 @@ function Navbar() {
           Menu
         </a>
         <a
-          href="#explore-dounload"
+          href="#explore-download"
           onClick={() => setMenu("mobile app")}
           className={menu === "mobile app" ? "active " : ""}
         >
@@ -43,7 +43,7 @@ function Navbar() {
       <div className="navbar-right">
         <img src={assets.search_icon} alt="" />
         <div className="navbar-search-icon">
-            <Link>
+            <Link to={"/cart"}>
             <img src={assets.basket_icon} alt="" />
             </Link>
             <div className="dot">0</div>
