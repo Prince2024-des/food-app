@@ -1,10 +1,18 @@
 import { useContext } from "react";
-import { StoreContext } from "../../../Context/StoreContext";
-import "./Cart.css"
+import { StoreContext } from "../../Context/StoreContext";
+import { useNavigate } from "react-router-dom";
+import "./Cart.css";
 
 export const Cart = () => {
   const { CartItems, food_list, removeFromCart, getTotalCartAmount } =
     useContext(StoreContext);
+
+  const navigate = useNavigate();
+
+  const navigateToPlaceorder = () => {
+    navigate("/placeorder");
+  };
+
   return (
     <div className="cart">
       <div className="cart-items">
@@ -18,24 +26,27 @@ export const Cart = () => {
         </div>
         <br />
         <hr />
-        {food_list.map((item) => {
+        {food_list.map((item, index) => {
           if (CartItems[item._id] > 0) {
             return (
-              <div className="cart-items-title cart-items-item">
-                <img src={item.image} alt="" />
-                <p>Ghc {item.name}</p>
-                <p>Ghc {item.price}</p>
-                <p>{CartItems[item._id]}</p>
-                <p>{CartItems[item._id] * item.price}</p>
-                <p onClick={() => removeFromCart(item._id)} className="cross">
-                  X
-                </p>
+              <div>
+                <div div className="cart-items-title cart-items-item">
+                  <img src={item.image} alt="" />
+                  <p>{item.name}</p>
+                  <p>Ghc {item.price}</p>
+                  <p>{CartItems[item._id]}</p>
+                  <p> Ghc {CartItems[item._id] * item.price}</p>
+                  <p onClick={() => removeFromCart(item._id)} className="cross">
+                    x
+                  </p>
+                </div>
+                <hr />
               </div>
             );
           }
         })}
-        {/* cart items div ends here */}
       </div>
+      {/* cart items div ends here */}
       <div className="cart-bottom">
         <div className="cart-total">
           <h2>Cart Total</h2>
@@ -47,7 +58,7 @@ export const Cart = () => {
             <hr />
             <div className="cart-total-details">
               <p>Delivery Charges</p>
-              <p>Ghc {getTotalCartAmount() === 0 ? 0 : 10}</p>
+              <p>Ghc{getTotalCartAmount() === 0 ? 0 : 10}</p>
             </div>
             <hr />
             <div className="cart-total-details">
@@ -57,21 +68,21 @@ export const Cart = () => {
               </p>
             </div>
           </div>
-          <button>Proceed To Checkout</button>
+          <button onClick={() => navigateToPlaceorder()}>
+            Proceed To Checkout
+          </button>
         </div>
         <div className="cart-promocode">
-            <div>
-                <p>Enter promo code here</p>
-                <div className="cart-promocode-input">
-                    <input type="text" placeholder="Promo code" />
-                    <button>Submit</button>
-                </div>
+          <div>
+            <p>Enter promo code here</p>
+            <div className="cart-promocode-input">
+              <input type="text" placeholder="Promo code" />
+              <button>Submit</button>
             </div>
+          </div>
         </div>
       </div>
       {/* cart bottom div ends here */}
     </div>
   );
 };
-
-export default Cart;
